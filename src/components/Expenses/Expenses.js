@@ -21,14 +21,18 @@ function Expenses(props) {
         selected={selectedYear}
         onDropdownChange={dropdownYearHandler}
       ></ExpensesFilter>
-      {filteredList.map((expense) => (
-        <ExpenseItem
-          key={expense.id}
-          title={expense.title}
-          amount={expense.amount}
-          date={expense.date}
-        />
-      ))}
+      {filteredList.length === 0 ? (
+        <p>No Expenses to show.</p>
+      ) : (
+        filteredList.map((expense) => (
+          <ExpenseItem
+            key={expense.id}
+            title={expense.title}
+            amount={expense.amount}
+            date={expense.date}
+          />
+        ))
+      )}
     </Card>
   );
 }
